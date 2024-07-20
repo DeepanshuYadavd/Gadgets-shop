@@ -1,0 +1,102 @@
+.chat-btn{
+  position: fixed;
+  bottom:3rem;
+  right: 3rem;
+  background: rgb(66, 66, 66);
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  z-index: 2;
+  color:white;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-btn .cross{
+  display: none;
+}
+/* if checkbox(#check) is checked then both icon appear   */
+#check:checked ~ .chat-btn i{
+  display: block;
+}
+#check:checked ~ .chat-btn .comment{
+  display: none;
+}
+#check{
+  display: none !important;
+}
+#check:checked ~
+.chat-wrapper{
+  opacity: 1;
+}
+.chat-wrapper{
+  opacity: 0;
+  position: fixed;
+  top: 5rem;
+  right: 1rem;
+  z-index: 3;
+  color:white;
+  transition: all 0.3s ease-in;
+  display: flex;
+  flex-direction: column;
+}
+.chat-header{
+  background: rgb(66, 66, 66);
+  color:white;
+  border: 2px solid gray;
+  border-radius: 1rem 1rem 0 0;
+  text-align: center;
+  padding:  0.3rem 3rem;
+}
+.chat-form{
+  border: 2px solid gray;
+  border-radius: 0 0 1rem 1rem;
+  color: black;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+.cht-msg{
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  max-height:300px;
+  overflow: auto;
+
+}
+.you{
+  background: #44b781;
+  align-self: flex-end !important;
+  border: 1px solid rgb(93, 93, 93);
+  padding: 0.3rem;
+  font-size: 1rem;
+  border-radius: 0.85rem;
+  max-width: 75%;
+}
+.team{
+  align-self: flex-start !important;
+  border: 1px solid rgb(93, 93, 93);
+  padding: 0.3rem;
+  font-size: 1rem;
+  border-radius: 0.85rem;
+  max-width: 75%;
+}
+.you .client,.team .support{
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.chat-form textarea{
+  resize: none;
+}
+.chat-us{
+  display: flex;
+  border: 2px solid gray;
+  border-radius: 8px;
+  height: 8dvh;
+}

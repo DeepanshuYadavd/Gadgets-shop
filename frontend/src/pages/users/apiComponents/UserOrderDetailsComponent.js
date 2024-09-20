@@ -13,7 +13,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 // this page is for after placed order to check  my order details:
-const UserOrderDetailsComponent = ({ getUser, userInfo, getOrderData }) => {
+const UserOrderDetailsComponent = ({
+  getUser,
+  userInfo,
+  getOrderData,
+  loadScript,
+}) => {
   // hooks:
   const [user, setUser] = useState({});
   const [isDelivered, setIsDelivered] = useState(false);
@@ -55,11 +60,34 @@ const UserOrderDetailsComponent = ({ getUser, userInfo, getOrderData }) => {
             setOrderButtonMsg("your order is placed(cod)");
           }
         }
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // order handler:
+  const orderHandler = () => {
+    setButtonDisabled(true);
+    if (paymentMethod === "pp") {
+      setOrderButtonMsg("Click below to pay for your order");
+      // payment method:
+      if (!isPaid) {
+        loadScript({
+          "client-id":
+            "AZkdGtanP6WwEGp5OVsxMvBnR_YoW6lXb41kDVbZZwyBAwxuVaDj11g-A8pDMDXlnYFVNaw-QI3yDwG8",
+        })
+          .then((paypal) => {
+            console.log(paypal);
+            paypal.Buttons({}).render("#paypal-container-element");
+          })
+          .catch((err) => console.log(err));
+      }
+    } else {
+      setOrderButtonMsg("Your order is placed,Thank you");
+    }
+  };
+
   return (
     <Container fluid>
       <Row className="mt-4">
@@ -148,10 +176,15 @@ const UserOrderDetailsComponent = ({ getUser, userInfo, getOrderData }) => {
                   size="lg"
                   variant="danger"
                   type="button"
+                  onClick={orderHandler}
                   disabled={buttonDisabled}
                 >
                   {orderButtonMsg}
                 </Button>
+              </div>
+              {/* paypal button */}
+              <div className="p-4">
+                <div id="paypal-container-element"></div>
               </div>
             </ListGroup.Item>
           </ListGroup>

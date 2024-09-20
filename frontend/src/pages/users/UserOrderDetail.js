@@ -1,6 +1,10 @@
 import UserOrderDetailsComponent from "./apiComponents/UserOrderDetailsComponent";
 import { useSelector } from "react-redux";
 import axios from "axios";
+
+// payment method:
+import { loadScript } from "@paypal/paypal-js";
+
 // component:
 const UserOdersDetails = () => {
   // redux data:
@@ -23,6 +27,7 @@ const UserOdersDetails = () => {
       getUser={getUser}
       userInfo={userInfo}
       getOrderData={getOrderData}
+      loadScript={loadScript}
     />
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React from "react";
 import {
   Container,
@@ -6,7 +7,6 @@ import {
   Form,
   InputGroup,
   Button,
-  Spinner,
   Alert,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
@@ -29,7 +29,7 @@ const ProfilePageComponent = ({
   const [user, setUser] = useState({});
   // fetch profile data:
   useEffect(() => {
-    userInfo
+    userInfo.id
       ? fetchUser(userInfo._id)
           .then((res) => {
             setUser(res);

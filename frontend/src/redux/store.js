@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { composeWithDevTools } from "@redux-devtools/extension";
 import { thunk } from "redux-thunk";
 import { cartReducer } from "./reducers/cartReducers";
 import { userRegisterLoginReducer } from "./reducers/userReducers";
@@ -13,7 +13,7 @@ const middleware = [thunk];
 // user info fetch from  local storage :
 const userInfoInLocalstorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
-  : (sessionStorage.getItem("userInfo"))
+  : sessionStorage.getItem("userInfo")
   ? JSON.parse(sessionStorage.getItem("userInfo"))
   : {};
 
